@@ -14,6 +14,7 @@ using std::string;
 template <typename T>
 class CustomHashMap{
   int size;
+  vector< list<T> > map;
 
   public:
     CustomHashMap(int mapSize);          //ctor
@@ -33,6 +34,18 @@ template <typename T>
 bool CustomHashMap<T>::put(string key, const T &val){
   printf("Attempting to put...\n");
   printf("Size: %d\n", size);
+  int sum = 0;
+  for(unsigned int i = 0; i < key.size(); ++i){
+    sum += key[i];
+  }
+  int loc = sum % size;
+  bool inserted = false;
+  for(auto it = map.at(loc).begin(); it < map.at(loc).end(); ++it){
+    if(key == map.at(loc).key){
+      map.at(loc).
+      inserted = true;
+    }
+  }
   return true;
 }
 
